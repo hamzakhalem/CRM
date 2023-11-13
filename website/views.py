@@ -19,8 +19,10 @@ def home(request):
             return redirect('home')
     return render(request, 'home.html')
 
-def login_user(request):
-    pass
+# def login_user(request):
+#     pass
 
 def logout_user(request):
-    pass
+    logout(request)
+    messages.success(request, message="you logged out!")
+    return redirect('home')
