@@ -3,7 +3,28 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+<div class="col-md-6 offset-md-3">
 
-Hello world
+    {% if user.is_authenticated %}
+        hello world
+    {% else %}
+
+        <h1>login</h1>
+        <br>
+        <form method="post" action=".">
+            {% csrf_token %}
+            <form>
+                <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Username" name="username" required>
+                </div>
+                <div class="mb-3">
+                <input type="password" class="form-control" placeholder="Password" name="password" required>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-secondary">Login</button>
+            </form>
+        </form>
+    {% endif %}
+</div>
 
 {% endblock content %}
