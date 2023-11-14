@@ -30,7 +30,19 @@ def logout_user(request):
 
 def register_user(request):
     if request.method =='POST':
-        form =SignUpForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-    return render(request, 'register.html', {})
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password= password)
+            login(request, user)
+            messages.success(request, message="Welcome to system")
+            return redirect('home')
+        else:
+            messages.success(request, message="error ya teti")
+            return render(request, 'register.html', {'form': form})
+
+    else:
+        form = SignUpForm
+        return render(request, 'register.html', {'form': form})
