@@ -6,7 +6,20 @@
 <div class="col-md-6 offset-md-3">
 
     {% if user.is_authenticated %}
-        hello world
+        <h1>Records ...</h1>
+        {% if records %}
+            {% for record in records  %}
+                    {{record.first_name}}
+                    {{record.last_name}}
+                    {{record.email}}
+                    {{record.phone}}
+                    {{record.adress}}
+                    {{record.city}}
+                    {{record.state}}
+                    {{record.zipcode}}
+                    <br><hr>
+            {% endfor %}
+        {% endif %}
     {% else %}
 
         <h1>login</h1>
