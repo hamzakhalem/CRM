@@ -3,22 +3,41 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="col-md-6 offset-md-3">
+<div class="">
 
     {% if user.is_authenticated %}
         <h1>Records ...</h1>
+
+            
         {% if records %}
+        <table class="table table-striped table-hover table-bordered ">
+            <thead class='table-dark'>
+              <tr>
+                <th scope="col">Fist Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Adress</th>
+                <th scope="col">ِCity</th>
+                <th scope="col">State</th>
+                <th scope="col">Zipcode</th>
+              </tr>
+            </thead>
+            <tbody>
             {% for record in records  %}
-                    {{record.first_name}}
-                    {{record.last_name}}
-                    {{record.email}}
-                    {{record.phone}}
-                    {{record.adress}}
-                    {{record.city}}
-                    {{record.state}}
-                    {{record.zipcode}}
-                    <br><hr>
+                    <tr>
+                    <td>{{record.first_name}}</td>
+                    <td>{{record.last_name}}</td>
+                    <td>{{record.email}}</td>
+                    <td>{{record.phone}}</td>
+                    <td>{{record.adress}}</td>
+                    <td>{{record.city}}</td>
+                    <td>{{record.state}}</td>
+                    <td>{{record.zipcode}}</td>
+                    </tr>
             {% endfor %}
+            </tbody>
+        </table>
         {% endif %}
     {% else %}
 
