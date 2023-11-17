@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm
@@ -49,3 +49,12 @@ def register_user(request):
     else:
         form = SignUpForm
         return render(request, 'register.html', {'form': form})
+
+def customer_record(request, pk):
+    if request.user.is_authenticated:
+        # record = get_object_or_404(Record, id=pk)
+        record = Record.objects.get(id=pk)
+        return render(request, 'record.html', {'record': record})
+    else:
+        messages.success(request, message="Marakch login ya teti")
+        return redirect('home')
