@@ -3,16 +3,23 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Customer Record</h1>
+<br>
+<div class="card">
+    <div class="card-header">
+        {{record.first_name}} {{record.last_name}} 
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Email: {{record.email}}</h5>
+      <h5 class="card-title">Adress: {{record.adress}}</h5>
+      <h5 class="card-title">Phone: {{record.phone}}</h5>
+      <h5 class="card-title">City: {{record.city}}</h5>
+      <h5 class="card-title">State: {{record.state}}</h5>
+      <h5 class="card-title">Zipcode: {{record.zipcode}}</h5>
+
+    </div>
+  </div>
+
     
-    <br>
-    {{record.first_name}} {{record.last_name}} <br>
-    {{record.email}} <br>
-    {{record.phone}} <br>
-    {{record.adress}} <br>
-    {{record.city}} <br>
-    {{record.state}} <br>
-    {{record.zipcode}} <br>
 
 
 {% endblock content %}
