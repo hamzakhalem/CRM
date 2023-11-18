@@ -85,13 +85,13 @@ def add_record(request):
 def update_record(request, pk):
     if request.user.is_authenticated:
         record = Record.objects.get(id=pk)
-        form = AddRecordForm(request.POST or None)
+        form = AddRecordForm(request.POST or None, instance=record)
         if request.user.is_authenticated:
             if form.is_valid():
                 form.save()
-                messages.success(request, message="Record added")
+                messages.success(request, message="Record Updated")
                 return redirect('home')
             else:
-                return render(request, 'add_record.html', {'form': form})
+                return render(request, 'update_record.html', {'form': form})
     else:
         return redirect('home')
