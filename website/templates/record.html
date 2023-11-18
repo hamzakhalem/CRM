@@ -17,7 +17,10 @@
       <h5 class="card-title">Zipcode: {{record.zipcode}}</h5>
 
     </div>
-  </div>
+</div>
+<br>
+<a href='{% url "home" %}' class='btn btn-secondary'> go home </a>
+<a href='{% url "delete_record" record.id %}' class='btn btn-danger'> Delete </a>
 
     
 

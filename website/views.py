@@ -58,3 +58,13 @@ def customer_record(request, pk):
     else:
         messages.success(request, message="Marakch login ya teti")
         return redirect('home')
+    
+def delete_record(request, pk):
+    if request.user.is_authenticated:
+        record = Record.objects.get(id=pk)
+        record.delete()
+        messages.success(request, message="Record deleted")
+        return redirect('home')
+    else:
+        messages.success(request, message="Error deleting record")
+        return redirect('home')
