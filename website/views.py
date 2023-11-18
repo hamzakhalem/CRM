@@ -81,3 +81,17 @@ def add_record(request):
                 return render(request, 'add_record.html', {'form': form})
     else:
         return redirect('home')
+    
+def update_record(request, pk):
+    if request.user.is_authenticated:
+        record = Record.objects.get(id=pk)
+        form = AddRecordForm(request.POST or None)
+        if request.user.is_authenticated:
+            if form.is_valid():
+                form.save()
+                messages.success(request, message="Record added")
+                return redirect('home')
+            else:
+                return render(request, 'add_record.html', {'form': form})
+    else:
+        return redirect('home')
