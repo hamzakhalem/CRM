@@ -1,2 +1,17 @@
 venv/
 mydb.py
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+myenv/
+env/
+.venv/
+
+# Local secrets
+.env
+
+# Local database
+*.sqlite3
